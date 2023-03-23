@@ -120,7 +120,5 @@ with open('log.txt', 'w') as f:
     m = build_problem(gp.Model(name = "ILP"))
 #    m.print_information()
     m.optimize()
-    for v in m.getVars():
-        print('%s %g' % (v.VarName, v.X))
 
 
