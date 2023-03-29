@@ -5,11 +5,9 @@ from itertools import product
 import numpy as np
 import sys
 
-# Calculate the ILP where 
-# n is the length of each vector, lb is the number of labels used by Bob, lc is the number of labels used by Carol
-# If the program returns with Solution count 0, it means the the problem is infeasible under this setting.
-# Otherwise, the problem is feasible, the program will print the variables.
-
+# n is the variable representing the length of each vector
+# lb is the variable representing the number of labels used by Bob
+# lc is the variable representing the number of labels used by Carol
 n = 4
 lb = 4
 lc = 4
