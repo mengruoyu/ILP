@@ -14,22 +14,20 @@ n = 4
 lb = 4
 lc = 4
 
-
+# f(y1, z1, y2, z2) checks whether (y1,z1)~_{GIP}(y2,z2) is true
 def f(y1, z1, y2, z2):
     # Check they have same Alice's vector
     if not np.array_equal((y1 + z1) % 3, (y2 + z2) % 3):
-        #print("exit at 1, y1, z1, y2, z2 = " + str(y1) + ", " +str(z1) + ", " +str(y2) + ", " +str(z2))
         return False
     f1 = poly(y1, z1)
     f2 = poly(y2, z2)
     # Determine whether they have same function value
     if f1 != f2:
-        #print("exit at 2, y1, z1, y2, z2 = " + str(y1) + ", " +str(z1) + ", " +str(y2) + ", " +str(z2))
         return True
-    else: 
-        #print("exit at 3, y1, z1, y2, z2 = " + str(y1) + ", " +str(z1) + ", " +str(y2) + ", " +str(z2))
+    else:
         return False
 
+# poly(y, z) calculate the GIP(x,y,z) where x = (y + z) mod 3
 def poly(y, z):
     a = 0
     for i in range(y.size):
@@ -37,31 +35,31 @@ def poly(y, z):
         a = a + y[i]*z[i]*reminder 
     return a % 3
 
+# We store each vector as a number from 0 to 3^n - 1 where n is the length of each vector. 
+# To compute the function value, we need to transform each number into an array in F_3^n
+# back and forth.
+# num_to_arr(num) and arr_to_num(arr) are used to perform such a transform.
 def num_to_arr(num):
     a = np.array([])
     for i in range(n):
         num,reminder = divmod(num,3)
         a =np.insert(a, int(0), int(reminder))
     return np.flip(a).astype(int)
-
 def arr_to_num(arr):
     num=0
     for i in range(arr.size):
         num = num + 3**i * arr[i] 
     return int(num)
 
+# Read data in the "collision_n.npy" file and define other variables used to construct ILP feasibility problem later.
 inputs = np.array(range(0, 3**n))
 n_labels = n
-
-
 labels_bob = range(1, 1 + lb)
 labels_carol = range(1, 1 + lc)
 labels_cross = list(product(labels_bob,labels_carol))
 inputs_cross = list(product(inputs,repeat = 2))
 inputs_absolute = np.load('collision_'+str(n)+'.npy')
 inputs_absolute = list(map(tuple, inputs_absolute))
-
-
 list_bob = [(u,l1) for u in inputs for l1 in labels_bob]
 list_carol = [(v,l2) for v in inputs for l2 in labels_carol]
 list_cross = [(u,v,l1,l2) for u in inputs for v in inputs for l1 in labels_bob for l2 in labels_carol]
@@ -69,7 +67,7 @@ list_absolute = [(u,v,z,w,l1,l2) for (u,v,z,w) in inputs_absolute for l1 in labe
 
 
 
-
+# Construct the ILP feasibility problem.
 def build_problem(m, **kwargs):
 
 
@@ -115,10 +113,19 @@ def build_problem(m, **kwargs):
             m.addConstr(
                 absolute[u, v, z, w, l1, l2] >= cross[u, v, l1, l2] + cross[z, w, l1, l2] - 1)
     return m
+
+# Run the ILP and store the result in the "log.txt" file.
+# After the program is terminated, we can check the result in the following way.
+# Open log.txt file and scroll down to the bottom. 
+# If the ILP is infeasible, then we will see that 
+# "Solution count 0"
+# "Model is infeasible"
+# If the ILP is feasible, then we will see that 
+# "Solution count 1: 0"
+# "Optimal solution found (tolerance 1.00e-04)"
 with open('log.txt', 'w') as f:
     sys.stdout = f
     m = build_problem(gp.Model(name = "ILP"))
-#    m.print_information()
     m.optimize()
 
 

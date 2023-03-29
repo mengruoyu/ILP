@@ -2,6 +2,10 @@
 from itertools import product
 import numpy as np
 
+
+# To generate a file to store pairs of vector length k, replace the row "n=4" below by "n=i" and run this file.
+n = 4
+
 # f(y1, z1, y2, z2) checks whether (y1,z1)~_{GIP}(y2,z2) is true
 def f(y1, z1, y2, z2):
     # Check they have same Alice's vector
@@ -39,8 +43,8 @@ def arr_to_num(arr):
         num = num + 3**i * arr[i] 
     return int(num)
 
-# To generate a file to store pairs of vector length k, replace the row "n=4" below by "n=i" and run this file.
-n = 4
+# Iterate each possible combination of (y1, z1, y2, z2). If they are s.t. (y1, z1)~_{GIP}(y2, z2),
+# then add (y1, z1, y2, z2) to the list that will be restored in the file after the loop.
 inputs = np.array(range(0, 3**n))
 inputs_absolute = list()
 for (u, v) in product(inputs, repeat=2):
@@ -51,6 +55,4 @@ for (u, v) in product(inputs, repeat=2):
         c2 = num_to_arr(w)
         if f(b1, c1, b2, c2):
             inputs_absolute.append((u,v,z,w))
-
-
 np.save('collision_'+str(n), inputs_absolute)
