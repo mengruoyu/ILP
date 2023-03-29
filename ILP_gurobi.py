@@ -8,9 +8,9 @@ import sys
 # n is the variable representing the length of each vector
 # lb is the variable representing the number of labels used by Bob
 # lc is the variable representing the number of labels used by Carol
-n = 4
-lb = 4
-lc = 4
+n = 2
+lb = 1
+lc = 27
 
 # f(y1, z1, y2, z2) checks whether (y1,z1)~_{GIP}(y2,z2) is true
 def f(y1, z1, y2, z2):
