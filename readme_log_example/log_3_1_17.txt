@@ -1,0 +1,43 @@
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-01-07
+Gurobi Optimizer version 10.0.0 build v10.0.0rc2 (win64)
+
+CPU model: Intel(R) Xeon(R) CPU E3-1240 v5 @ 3.50GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+
+Optimize a model with 602577 rows, 197703 columns and 1935477 nonzeros
+Model fingerprint: 0xb274068f
+Variable types: 0 continuous, 197703 integer (197703 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+00]
+Presolve removed 37206 rows and 12420 columns (presolve time = 5s) ...
+Presolve removed 102741 rows and 77972 columns (presolve time = 10s) ...
+Presolve removed 102741 rows and 77972 columns (presolve time = 15s) ...
+Presolve removed 102741 rows and 77972 columns (presolve time = 20s) ...
+Presolve removed 602533 rows and 197244 columns
+Presolve time: 22.32s
+Presolved: 44 rows, 459 columns, 918 nonzeros
+Variable types: 0 continuous, 459 integer (459 binary)
+
+Root simplex log...
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   2.700000e+01   0.000000e+00     23s
+
+Root relaxation: infeasible, 56 iterations, 0.01 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0 infeasible    0               - infeasible      -     -   22s
+
+Explored 1 nodes (56 simplex iterations) in 22.67 seconds (14.12 work units)
+Thread count was 8 (of 8 available processors)
+
+Solution count 0
+
+Model is infeasible
+Best objective -, best bound -, gap -
