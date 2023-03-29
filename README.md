@@ -2,14 +2,6 @@
 
 This project is used to numerically compute the feasibility of the ILP in the paper. 
 
-## Table of Contents 
-- [Project Title](#project-title) 
-- - [Table of Contents](#table-of-contents) 
-- - [Prerequisites](#prerequisites) 
-- - [Installation](#installation) 
-- - [Usage](#usage) - [Contributing](#contributing) 
-- - [License](#license) 
-- - [Acknowledgments](#acknowledgments)
 
 ## Prerequisites
 
@@ -35,7 +27,7 @@ In the case that Anaconda 3 is using a python version that is not supported, cre
 Here, we show the example of creating an environment with python 3.10.
 
 Open a terminal:
-![open anaconda prompt](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/img_create_evn_0.png)
+![open anaconda prompt](https://github.com/mengruoyu/ILP/blob/master/readme_img/img_create_evn_0.png)
 
 Create new python 3.10 environment with name py3_10:
 ```bash
@@ -161,13 +153,13 @@ The "generate_collision.py" file generate an npy file named collision_n. The col
 To generate a file to store pairs of vector length k, replace the row "n=4" below by "n=k" and run this file. 
 We use the case k=1 for example. 
 #### Step 1: replace "n=4" by "n=k"
-![step1](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/img_create_collision_0.png)
+![step1](https://github.com/mengruoyu/ILP/blob/master/readme_img/img_create_collision_0.png)
 #### Step 2: run the file
 ##### Windows
 Open Spyder in Anaconda.Navigator.
-![step1.5](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/img_create_collision_2.png)
+![step1.5](https://github.com/mengruoyu/ILP/blob/master/readme_img/img_create_collision_2.png)
 Run the file.
-![step2](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/img_create_collision_2.png)
+![step2](https://github.com/mengruoyu/ILP/blob/master/readme_img/img_create_collision_2.png)
 ##### Linux
 Type (making sure the py3_10 environment is activated)
 ```bash
@@ -206,14 +198,14 @@ The following is an example to run the file.
 
 #### Step 1: set up n,lb,lc
 We set n=2,lb=1,lc=27
-![Step1_ILP](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/img_run_IL_0.png)
+![Step1_ILP](https://github.com/mengruoyu/ILP/blob/master/readme_img/img_run_IL_0.png)
 
 #### Step 2: Run the code
 ##### Windows
 Open Spyder in Anaconda.Navigator.
-![step1.5](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/img_create_collision_2.png)
+![step1.5](https://github.com/mengruoyu/ILP/blob/master/readme_img/img_create_collision_2.png)
 Run the file.
-![Step2_ILP](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/img_run_IL_1.png)
+![Step2_ILP](https://github.com/mengruoyu/ILP/blob/master/readme_img/img_run_IL_1.png)
 ##### Linux
 Type (making sure the py3_10 environment is activated)
 ```bash
@@ -222,7 +214,7 @@ python3 ILP_gurobi.py
 Next, we wait for the program to terminate. Since the size of ILP increases exponentially w.r.t. our parameters n,lb,lc, it may take very long time for the program to terminate when n,lb,lc are large.
 
 After the program is terminated, open the log.txt file and we are expected to see the following
-![result](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/result.png)
+![result](https://github.com/mengruoyu/ILP/blob/master/readme_img/result.png)
 At the bottom, we can find 
 ```bash
 Solution count 1: 0
@@ -232,7 +224,7 @@ Optimal solution found (tolerance 1.00e-04)
 Therefore, under this setting, the ILP is feasible. (Carol can just send her vectors to Alice since she has 27 labels. Alice can calculate Bob's vector from the promise. Therefore, Alice can calculate the function value.)
 
 If we set n=3,lb=1,lc=17 and run the file, we are expected to see the following in the log.txt
-![result1](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_img/result1.png)
+![result1](https://github.com/mengruoyu/ILP/blob/master/readme_img/result1.png)
 ```bash
 Solution count 0
 
@@ -240,7 +232,7 @@ Model is infeasible
 ```
 Therefore, under this setting, the ILP is infeasible.
 
-The log.txt file is stored in this project at [log_2_1_27.txt](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_log_example/log_2_1_27.txt) and [log_3_1_17.txt](https://github.com/mengruoyu/ruoyumeng/blob/master/readme_log_example/log_3_1_17.txt).
+The log.txt file is stored in this project at [log_2_1_27.txt](https://github.com/mengruoyu/ILP/blob/master/readme_log_example/log_2_1_27.txt) and [log_3_1_17.txt](https://github.com/mengruoyu/ILP/blob/master/readme_log_example/log_3_1_17.txt).
 
 
 
