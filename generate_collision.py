@@ -3,7 +3,7 @@ from itertools import product
 import numpy as np
 
 
-# To generate a file to store pairs of vector length k, replace the row "n=4" below by "n=i" and run this file.
+# To generate a file to store pairs of vector length k, replace the row "n=4" below by "n=k" and run this file.
 n = 4
 
 # f(y1, z1, y2, z2) checks whether (y1,z1)~_{GIP}(y2,z2) is true
